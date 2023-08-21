@@ -11,29 +11,33 @@ public abstract class Insurance {
 
 
 //Special Health Insurance
-class HealthInsurance{
+class HealthInsurance extends Insurance{
 
+    @Override
     public double calculate(){
         return 0;
     }
 }
 
 //House Insurance
-class ResidenceInsurance {
+class ResidenceInsurance extends Insurance{
+    @Override
     public double calculate() {
         return 0;
     }
 }
 
 //Travel Insurance
-class TravelInsurance{
+class TravelInsurance extends Insurance{
+    @Override
     public double calculate() {
         return 0;
     }}
 
 
 //Car Insurance
-class CarInsurance{
+class CarInsurance extends Insurance{
+    @Override
     public double calculate() {
         return 0;
     }
