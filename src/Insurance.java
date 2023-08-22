@@ -5,8 +5,9 @@ public abstract class Insurance {
     private String insuranceName;
     private double insurancePrice;
     private Date insuranceDates;
+    private User user;
 
-    abstract double calculate();
+    abstract double calculate(double insurancePrice);
 }
 
 
@@ -14,7 +15,7 @@ public abstract class Insurance {
 class HealthInsurance extends Insurance{
 
     @Override
-    public double calculate(){
+    public double calculate(double insurancePrice){
         return 0;
     }
 }
@@ -22,7 +23,7 @@ class HealthInsurance extends Insurance{
 //House Insurance
 class ResidenceInsurance extends Insurance{
     @Override
-    public double calculate() {
+    public double calculate(double insurancePrice) {
         return 0;
     }
 }
@@ -30,7 +31,7 @@ class ResidenceInsurance extends Insurance{
 //Travel Insurance
 class TravelInsurance extends Insurance{
     @Override
-    public double calculate() {
+    public double calculate(double insurancePrice) {
         return 0;
     }}
 
@@ -38,7 +39,7 @@ class TravelInsurance extends Insurance{
 //Car Insurance
 class CarInsurance extends Insurance{
     @Override
-    public double calculate() {
+    public double calculate(double insurancePrice) {
         return 0;
     }
 }
