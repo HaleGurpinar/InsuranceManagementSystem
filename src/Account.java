@@ -29,4 +29,28 @@ abstract public class Account implements Comparable<Account>{
     public boolean isLogin(){
         return status==AuthenticationStatus.SUCCESS;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public AuthenticationStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(AuthenticationStatus status) {
+        this.status = status;
+    }
+
+    public ArrayList<Insurance> getInsuranceArrayList() {
+        return insuranceArrayList;
+    }
+
+    public void setInsuranceArrayList(ArrayList<Insurance> insuranceArrayList) {
+        this.insuranceArrayList = insuranceArrayList;
+    }
 }
