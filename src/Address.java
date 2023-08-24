@@ -5,14 +5,14 @@ public interface Address {
     public void update(String address);
 }
 
-class HomeAdress implements Address{
+class HomeAddress implements Address{
     private String address;
 
-    public HomeAdress(String address) {
+    public HomeAddress(String address) {
         this.address = address;
     }
 
-    public HomeAdress() {
+    public HomeAddress() {
         super();
     }
 
