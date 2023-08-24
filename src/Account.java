@@ -22,4 +22,11 @@ abstract public class Account implements Comparable<Account>{
             throw new InvalidAuthenticationException("Invalid Password or Email !!!");
         }
     }
+
+    public abstract void addAddress(Address address);
+    public abstract void removeAddress(Address address);
+
+    public boolean isLogin(){
+        return status==AuthenticationStatus.SUCCESS;
+    }
 }
