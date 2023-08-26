@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Objects;
 
 abstract public class Account implements Comparable<Account>{
 
@@ -52,5 +53,21 @@ abstract public class Account implements Comparable<Account>{
 
     public void setInsuranceArrayList(ArrayList<Insurance> insuranceArrayList) {
         this.insuranceArrayList = insuranceArrayList;
+    }
+
+    public abstract void addInsurance(Insurance i);
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(user);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return  true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Account account=(Account) obj;
+        return Objects.equals(user,account.user);
+
     }
 }
