@@ -8,7 +8,17 @@ public class AccountManager {
 
     public void login(String email, String password){
         for (Account account1: accounts){
-
+            try {
+                account1.login(email, password);
+                if (account1.isLogin()){
+                    currentUser= account1.getUser();
+                    this.account=account;
+                    if (account1.getType()==1)
+                        individualProcess();
+                }
+            }catch (InvalidAuthenticationException e){
+                System.out.println(e);
+            }
         }
     }
 
@@ -44,11 +54,37 @@ public class AccountManager {
     }
 
     public void createAccount(){
+        Scanner scn = new Scanner(System.in);
+
+        String name, surname, email, password, job;
+        int age;
+        System.out.print("Enter name : "); name = scn.nextLine();
+        System.out.print("Enter surname : "); surname = scn.nextLine();
+        System.out.print("Enter email : "); email = scn.nextLine();
+        System.out.print("Enter password : "); password = scn.nextLine();
+        System.out.print("Enter job : "); job = scn.nextLine();
+        System.out.print("Enter age : "); age = scn.nextInt();
+        User user = new User(name, surname, email, password, job, age);
+
+        System.out.println("Are you individual (1 for yes 0 for no) : ");
+        name = scn.nextLine();
+        Account prop;
+        if(name.equals("1")){
+            prop = new Individual(user);
+        }
+        else{
+            prop = new Enterprise(user);
+        }
+        accounts.add(prop);
+    }
+    public void individualProcess(){
 
     }
 
     public  TreeSet<Account>getAccounts(){
         return accounts;
     }
+    public void enterpriseUserProcess(){
 
+    }
 }
