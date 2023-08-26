@@ -61,8 +61,8 @@ public abstract class Account implements Comparable<Account>{
         return type;
     }
 
-    public void setType(int type) {
-        this.type = type;
+    public void setType(int a) {
+        type = a;
     }
 
     @Override
@@ -114,5 +114,34 @@ class Individual extends Account{
     public void addInsurance(Insurance i) {
         User.getInsuranceList().add(i);
     }
+}
 
+class Enterprise extends Account{
+    private  User user;
+
+    public Enterprise(User user) {
+        this();
+        this.user = user;
+    }
+
+    public Enterprise(){
+        this.setStatus(AuthenticationStatus.FAIL);
+        this.setInsuranceArrayList(new ArrayList<>());
+        setType(1);
+    }
+
+    @Override
+    public void addAddress(Address address) {
+        user.getAddressList().add(address);
+    }
+
+    @Override
+    public void removeAddress(Address address) {
+        user.getAddressList().remove(address);
+    }
+
+    @Override
+    public void addInsurance(Insurance i) {
+        User.getInsuranceList().add(i);
+    }
 }
