@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 import java.util.Objects;
 
-abstract public class Account implements Comparable<Account>{
+public abstract class Account implements Comparable<Account>{
 
     private User user;
     enum AuthenticationStatus{ SUCCESS, FAIL }
     AuthenticationStatus status;
-
     ArrayList<Insurance> insuranceArrayList;
+    private int type;
 
     private final void showUserInfo(){
         System.out.println("User Information");
@@ -57,6 +57,14 @@ abstract public class Account implements Comparable<Account>{
 
     public abstract void addInsurance(Insurance i);
 
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(user);
@@ -70,6 +78,11 @@ abstract public class Account implements Comparable<Account>{
         return Objects.equals(user,account.user);
 
     }
+
+    @Override
+    public int compareTo(Account o) {
+        return this.hashCode()-o.hashCode();
+    }
 }
 
 class Individual extends Account{
@@ -77,7 +90,7 @@ class Individual extends Account{
 
     public Individual(){
         this.setStatus(AuthenticationStatus.FAIL);
-        this.setInsuranceList(new ArrayList<>());
+        this.setInsuranceArrayList(new ArrayList<>());
         setType(0);
     }
 
@@ -101,4 +114,5 @@ class Individual extends Account{
     public void addInsurance(Insurance i) {
         User.getInsuranceList().add(i);
     }
+
 }
