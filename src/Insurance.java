@@ -1,4 +1,6 @@
+import java.time.Instant;
 import java.util.Date;
+import java.util.Scanner;
 
 public abstract class Insurance {
 
@@ -6,6 +8,14 @@ public abstract class Insurance {
     private double insurancePrice;
     private Date insuranceDates;
     private User user;
+
+
+    public Insurance(String insuranceName, double insurancePrice, Date insuranceDates,User user) {
+        this.insuranceName = insuranceName;
+        this.insurancePrice = insurancePrice;
+        this.insuranceDates = insuranceDates;
+        this.user = user;
+    }
 
     abstract double calculate(double insurancePrice);
 
@@ -45,6 +55,9 @@ public abstract class Insurance {
 
 //Special Health Insurance
 class HealthInsurance extends Insurance{
+    public HealthInsurance(String insuranceName, double insurancePrice, Date insuranceDates,User user) {
+        super(insuranceName, insurancePrice, insuranceDates,user);
+    }
 
     @Override
     public double calculate(double insurancePrice){
@@ -54,6 +67,10 @@ class HealthInsurance extends Insurance{
 
 //House Insurance
 class ResidenceInsurance extends Insurance{
+    public ResidenceInsurance(String insuranceName, double insurancePrice, Date insuranceDates,User user) {
+        super(insuranceName, insurancePrice, insuranceDates,user);
+    }
+
     @Override
     public double calculate(double insurancePrice) {
         return 0;
@@ -62,6 +79,10 @@ class ResidenceInsurance extends Insurance{
 
 //Travel Insurance
 class TravelInsurance extends Insurance{
+    public TravelInsurance(String insuranceName, double insurancePrice, Date insuranceDates,User user) {
+        super(insuranceName, insurancePrice, insuranceDates,user);
+    }
+
     @Override
     public double calculate(double insurancePrice) {
         return 0;
@@ -70,8 +91,34 @@ class TravelInsurance extends Insurance{
 
 //Car Insurance
 class CarInsurance extends Insurance{
+    public CarInsurance(String insuranceName, double insurancePrice, Date insuranceDates,User user) {
+        super(insuranceName, insurancePrice, insuranceDates,user);
+    }
+
     @Override
     public double calculate(double insurancePrice) {
         return 0;
+    }
+}
+class InsuranceManager{
+    User user;
+
+    public InsuranceManager() {
+    }
+    public Insurance createInsurance(User user){
+        Scanner src = new Scanner(System.in);
+        System.out.println("Select one of Insurance : "+
+                "\n 1 - Health "+
+                "\n 2 - Residence "+
+                "\n 3 - Travel " +
+                "\n 4 - Car ");
+        String choice =src.nextLine();
+        System.out.print("Enter amount :");
+        double price =src.nextInt();
+
+        if (choice.equals("1")) return new HealthInsurance("Health Insurance",1.98,Date.from(Instant.now()), user);
+        if (choice.equals("2")) return new ResidenceInsurance("Residence Insurance",1.46,Date.from(Instant.now()),user);
+        if (choice.equals("3")) return new TravelInsurance("Travel Insurance ",1.30,Date.from(Instant.now()),user);
+        return new CarInsurance("Car Insurance",1.50,Date.from(Instant.now()),user);
     }
 }

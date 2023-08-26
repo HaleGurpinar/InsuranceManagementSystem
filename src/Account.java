@@ -9,7 +9,7 @@ public abstract class Account implements Comparable<Account>{
     ArrayList<Insurance> insuranceArrayList;
     private int type;
 
-    private final void showUserInfo(){
+    public void showUserInfo(){
         System.out.println("User Information");
         System.out.println("Name: "+user.getName()+"Surname: "+ user.getSurname()+"Job"+user.getJob()+"Age"+ user.getAge());
     }

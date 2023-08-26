@@ -78,7 +78,37 @@ public class AccountManager {
         accounts.add(prop);
     }
     public void individualProcess(){
+        System.out.println("Welcome " +currentUser.getName());
+        String choice ="1";
+        while (!choice.equals("q")){
+            Scanner src = new Scanner(System.in);
+            System.out.println("\n1-) Show my Information");
+            System.out.println("2-) Get Insurance");
+            System.out.println("3-) Show Insurance List");
+            System.out.println("4-) Add Address");
+            System.out.println("5-) Show All Address");
+            choice = src.nextLine();
 
+            if (choice.equals("1")){
+                account.showUserInfo();
+            } else if (choice.equals("2")) {
+                InsuranceManager insuranceManager =new InsuranceManager();
+                account.addInsurance(insuranceManager.createInsurance(currentUser));
+            } else if (choice.equals("3")) {
+                for (Insurance insurance: account.getUser().getInsuranceList()) {
+                    System.out.print(" \n  Name : "+ insurance.getInsuranceName());
+                    System.out.println("Price : "+insurance.getInsurancePrice());
+                }
+            } else if (choice.equals("4")) {
+                account.addAddress(AddressManager.createHomeAddress());
+            } else if (choice.equals("5")) {
+                for (Address address:currentUser.getAddressList()){
+                    System.out.println(currentUser.getAddressList());
+                }
+            }
+
+
+        }
     }
 
     public  TreeSet<Account>getAccounts(){
