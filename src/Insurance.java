@@ -8,6 +8,38 @@ public abstract class Insurance {
     private User user;
 
     abstract double calculate(double insurancePrice);
+
+    public String getInsuranceName() {
+        return insuranceName;
+    }
+
+    public void setInsuranceName(String insuranceName) {
+        this.insuranceName = insuranceName;
+    }
+
+    public double getInsurancePrice() {
+        return insurancePrice;
+    }
+
+    public void setInsurancePrice(double insurancePrice) {
+        this.insurancePrice = insurancePrice;
+    }
+
+    public Date getInsuranceDates() {
+        return insuranceDates;
+    }
+
+    public void setInsuranceDates(Date insuranceDates) {
+        this.insuranceDates = insuranceDates;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
 
 
