@@ -61,7 +61,8 @@ class HealthInsurance extends Insurance{
 
     @Override
     public double calculate(double insurancePrice){
-        return 0;
+        System.out.println(" 6 month insurance plan cost is : "+insurancePrice*6);
+        return insurancePrice*6;
     }
 }
 
@@ -73,7 +74,8 @@ class ResidenceInsurance extends Insurance{
 
     @Override
     public double calculate(double insurancePrice) {
-        return 0;
+        System.out.println(" 12 month insurance plan cost is : "+insurancePrice*12);
+        return insurancePrice*12;
     }
 }
 
@@ -85,7 +87,8 @@ class TravelInsurance extends Insurance{
 
     @Override
     public double calculate(double insurancePrice) {
-        return 0;
+        System.out.println(" 2 month insurance plan cost is : "+insurancePrice*2);
+        return insurancePrice*2;
     }}
 
 
@@ -97,7 +100,8 @@ class CarInsurance extends Insurance{
 
     @Override
     public double calculate(double insurancePrice) {
-        return 0;
+        System.out.println(" 24 month insurance plan cost is : "+insurancePrice*24);
+        return insurancePrice*24;
     }
 }
 class InsuranceManager{

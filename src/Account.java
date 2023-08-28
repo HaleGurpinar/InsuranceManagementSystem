@@ -61,8 +61,8 @@ public abstract class Account implements Comparable<Account>{
         return type;
     }
 
-    public void setType(int a) {
-        type = a;
+    public void setType(int type) {
+        this.type = type;
     }
 
     @Override
@@ -120,7 +120,6 @@ class Enterprise extends Account{
     private  User user;
 
     public Enterprise(User user) {
-        this();
         this.user = user;
     }
 

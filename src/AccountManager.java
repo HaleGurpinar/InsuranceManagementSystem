@@ -5,6 +5,11 @@ public class AccountManager {
     TreeSet<Account> accounts;
     Account account;
     User currentUser;
+    AccountManager(){
+        accounts = new TreeSet<>();
+        run();
+
+    }
 
     public void login(String email, String password){
         for (Account account1: accounts){
@@ -23,34 +28,39 @@ public class AccountManager {
     }
 
     public void run(){
-        Scanner sc= new Scanner(System.in);
+        Scanner scn = new Scanner(System.in);
+        String choice = "GO";
+        while(!choice.equals("3")){
+            System.out.println("1-) Create an Account");
+            System.out.println("2-) Login to Account");
+            System.out.println("3-) Quit");
+            System.out.println("4-) Admin Login");
+            System.out.print("Choice : ");
+            choice = scn.nextLine();
 
-        System.out.println(" 1. Create an Account"+"\n 2. Login Account"+"\n 3. Admin Login"+"\n 4. Exit");
-        System.out.println("Select Menu");
-        int select=sc.nextInt();
-        switch (select){
-            case 1:
+            if(choice.equals("1"))
                 createAccount();
-                break;
-            case 2:
+
+            else if(choice.equals("2")){
                 System.out.print("Enter email : ");
-                String email = sc.nextLine();
-                System.out.print("\nEnter password : ");
-                String password = sc.nextLine();
-                login(email,password);
-                break;
-            case 3:
+                String email = scn.nextLine();
+                System.out.print("Enter password : ");
+                String password = scn.nextLine();
+
+                login(email, password);
+            }
+            else if(choice.equals("4")){
                 System.out.println("Printing all accounts and passwords in the system ...");
-                for (Account a: getAccounts())
-                    System.out.println("Email : "+a.getUser().getEmail()+" \nPassword : "+a.getUser().getPassword());
+                for(Account a : getAccounts())
+                    System.out.println("Email : "+ a.getUser().getEmail() + " Password : " + a.getUser().getPassword());
 
                 System.out.println("Printing all InsuranceList in the system ...");
-                for (Insurance a:User.getInsuranceList())
-                    System.out.println("\nCustomer name : "+a.getUser().getName()+"\nInsurance Name : "+a.getInsuranceName()+"\nTotal price : "+a.getInsurancePrice());
-                break;
-            default:
-                System.out.println("Invalid selection");
+                for(Insurance a : User.getInsuranceList())
+                    System.out.println("Customer name : "+a.getUser()+" Insurance Name : "+a.getInsuranceName() + " Total Price : " + a.getInsurancePrice()+"\n");
+
+            }
         }
+
     }
 
     public void createAccount(){
@@ -68,6 +78,7 @@ public class AccountManager {
 
         System.out.println("Are you individual (1 for yes 0 for no) : ");
         name = scn.nextLine();
+        System.out.println(name);
         Account prop;
         if(name.equals("1")){
             prop = new Individual(user);
@@ -106,8 +117,6 @@ public class AccountManager {
                     System.out.println(currentUser.getAddressList());
                 }
             }
-
-
         }
     }
 
